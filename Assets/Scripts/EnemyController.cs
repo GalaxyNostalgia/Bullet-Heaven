@@ -1,10 +1,14 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    private Transform _player; 
+    private Transform _playerTransform; 
+    private GameObject _player;
     private Rigidbody _rigidbody;
+    private Renderer _renderer;
     int _damage = 10; 
     int _speed = 1;
     float _attackCooldown = 1f;
@@ -13,11 +17,9 @@ public class EnemyController : MonoBehaviour
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
-    }
-
-    void Start()
-    {
-        _player = GameObject.FindWithTag("Player").transform;
+        _player = GameObject.FindWithTag("Player");
+        _playerTransform = _player.transform;
+        _renderer = _player.GetComponent<Renderer>();
     }
     
     void FixedUpdate()
@@ -27,7 +29,7 @@ public class EnemyController : MonoBehaviour
 
     public void MoveTowardsPlayer()
     {
-        Vector3 direction = (_player.position - transform.position).normalized;
+        Vector3 direction = (_playerTransform.position - transform.position).normalized;
         direction.y = 0;
         Vector3 newPosition = _rigidbody.position + direction * (_speed * Time.fixedDeltaTime);
         _rigidbody.MovePosition(newPosition);
@@ -52,11 +54,20 @@ public class EnemyController : MonoBehaviour
         {
             healthComponent.TakeDamage(_damage);
             _lastAttackTime = Time.time;
+            StartCoroutine(FlashRed());
         }
         
-        Vector3 knockbackDirection = (player.transform.position - transform.position).normalized;
-        knockbackDirection.z = 0; 
-        player.GetComponent<Rigidbody>().AddForce(knockbackDirection * 5, ForceMode.Impulse);
+        Vector3 knockbackDirection = (player.transform.position - transform.position + new Vector3((player.transform.position.x - transform.position.x)*10, 5, (player.transform.position.z - transform.position.z)*10)).normalized;
+        player.GetComponent<PlayerController>().ApplyKnockback();
+        player.GetComponent<Rigidbody>().AddForce(knockbackDirection * 10f, ForceMode.Impulse);
+
  
+    }
+
+    private IEnumerator FlashRed()
+    {
+        _renderer.material.color = Color.red;
+        yield return new WaitForSeconds(0.25f);
+        _renderer.material.color = Color.white;
     }
 }
