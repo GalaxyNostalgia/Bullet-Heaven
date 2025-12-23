@@ -35,7 +35,7 @@ public class EnemyController : MonoBehaviour
         _rigidbody.MovePosition(newPosition);
         
         Quaternion targetRotation = Quaternion.LookRotation(direction);
-        _rigidbody.MoveRotation(Quaternion.Slerp(_rigidbody.rotation, targetRotation, 100f * Time.fixedDeltaTime));
+        _rigidbody.MoveRotation(targetRotation);
         
     }
 

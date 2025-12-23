@@ -9,6 +9,9 @@ public class PlayerController : MonoBehaviour
     
     private int _speed = 5;
     private Vector2 _movement;
+    private float _knockbackEndTime = 0f;
+    private float _fallMultiplier = 2.5f;
+
     
     public InputActionAsset asset;
     private InputAction _moveAction;
@@ -35,15 +38,24 @@ public class PlayerController : MonoBehaviour
     private void Update()
     { 
         _movement = _moveAction.ReadValue<Vector2>();
-        if (_jumpAction.WasPressedThisFrame())
+        if (_jumpAction.WasPressedThisFrame() && Time.time >= _knockbackEndTime)
         {
             Jump();
         }
     }
 
-    public void Jump()
+    private void Jump()
     {
-        _rb.AddForce(new Vector3(0, 10, 0), ForceMode.Impulse);
+        bool isTheCharacterGrounded = IsGrounded();
+        if (isTheCharacterGrounded)
+        {
+            _rb.AddForce(new Vector3(0, 10, 0), ForceMode.Impulse);
+        }
+    }
+
+    private bool IsGrounded()
+    {
+        return Physics.Raycast(transform.position, Vector3.down, 1.5f);
     }
 
     void FixedUpdate()
@@ -53,11 +65,9 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private float _knockbackEndTime = 0f;
 
-    public void Movement()
+    private void Movement()
     {
-        // Don't override velocity if we're being knocked back
         if (Time.time < _knockbackEndTime)
             return;
 
@@ -75,8 +85,15 @@ public class PlayerController : MonoBehaviour
 
         _rb.linearVelocity = Vector3.Lerp(_rb.linearVelocity, targetVelocity, 0.75f);
 
+        FasterFall();
+    }
+
+    private void FasterFall()
+    {
         if (_rb.linearVelocity.y < 0f)
-            _rb.linearVelocity -= Vector3.down * (Physics.gravity.y * Time.fixedDeltaTime);
+        {
+            _rb.linearVelocity += Vector3.up * (_fallMultiplier * (Physics.gravity.y * Time.fixedDeltaTime));
+        }
     }
 
     public void ApplyKnockback(float duration = 0.25f)
