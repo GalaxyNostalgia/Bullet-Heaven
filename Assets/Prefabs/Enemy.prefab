@@ -532,6 +532,7 @@ GameObject:
   - component: {fileID: 378152736316749843}
   - component: {fileID: 1247549551252017763}
   - component: {fileID: 9002033742684981904}
+  - component: {fileID: -3392899106948736303}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -674,3 +675,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8623459977a15ac478be0bf109761059, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyController
+--- !u!114 &-3392899106948736303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8202836128670277623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f8f0b752602f2749adf5849c43ce6fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthComponent
+  deathParticleEffect: {fileID: 6937991036912504914, guid: 0268e18460aae3240b9af5469ab9ce4c, type: 3}

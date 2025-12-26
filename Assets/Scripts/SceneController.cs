@@ -1,12 +1,14 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class SceneController : MonoBehaviour
 {
     [SerializeField] private GameObject enemyPrefab;
+    [SerializeField] private Transform[] spawnPoints;
     private GameObject _player;
-    private float _spawnInterval = 3f;
+    private float _spawnInterval = 5f;
     private float _lastSpawnTime = 0f;
 
     private void Awake()
@@ -17,7 +19,32 @@ public class SceneController : MonoBehaviour
     
     void Update()
     {
-        List<GameObject> enemies = new List<GameObject>();
+        OutOfBounds();
+        if (Time.time >= _lastSpawnTime + _spawnInterval)
+        {
+            SpawnEnemy();
+            SpawnEnemy();
+            SpawnEnemy();
+            SpawnEnemy();
+            SpawnEnemy();
+            _lastSpawnTime = Time.time;
+        }
         
+    }
+
+    private void SpawnEnemy()
+    {
+        int index = Random.Range(0, spawnPoints.Length);
+        int[] offsets = {-2, -1, 0, 1, 2};
+        Vector3 offset = new Vector3(offsets[Random.Range(0, offsets.Length)], offsets[Random.Range(0, offsets.Length)], offsets[Random.Range(0, offsets.Length)]); 
+        Instantiate(enemyPrefab, spawnPoints[index].position + offset, Quaternion.identity);
+    }
+
+    private void OutOfBounds()
+    {
+        if (_player.transform.position.y < -5)
+        {
+            _player.transform.position = new Vector3(0, 2f, 0);
+        }
     }
 }
