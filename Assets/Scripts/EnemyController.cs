@@ -1,6 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
@@ -11,7 +9,7 @@ public class EnemyController : MonoBehaviour
     private int _damage = 10; 
     private int _speed = 1;
     private float _attackCooldown = 1f;
-    private float _lastAttackTime = 0f;
+    private float _lastAttackTime;
 
     private void Awake()
     {
@@ -30,7 +28,7 @@ public class EnemyController : MonoBehaviour
 
     private void MoveTowardsPlayer()
     {
-        if (_playerTransform == null) return;
+        if (!_playerTransform) return;
     
         Vector3 direction = (_playerTransform.position - transform.position).normalized;
         direction.y = 0;
@@ -54,6 +52,8 @@ public class EnemyController : MonoBehaviour
     {
         if (player == null) return;
     
+        var playerController = player.GetComponent<PlayerController>();
+        
         var healthComponent = player.GetComponent<HealthComponent>();
         if (healthComponent != null)
         {
@@ -62,7 +62,6 @@ public class EnemyController : MonoBehaviour
         }
 
         Vector3 knockbackDirection = (player.transform.position - transform.position + new Vector3((player.transform.position.x - transform.position.x)*10, 5, (player.transform.position.z - transform.position.z)*10)).normalized;
-        var playerController = player.GetComponent<PlayerController>();
         var playerRigidbody = player.GetComponent<Rigidbody>();
     
         if (playerController != null) playerController.ApplyKnockback();

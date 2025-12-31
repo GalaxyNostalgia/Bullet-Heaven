@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 84481907}
   - component: {fileID: 84481906}
   - component: {fileID: 84481905}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cylinder (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -307,7 +307,7 @@ GameObject:
   - component: {fileID: 330585544}
   - component: {fileID: 330585547}
   - component: {fileID: 330585548}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -479,7 +479,7 @@ GameObject:
   - component: {fileID: 366118983}
   - component: {fileID: 366118985}
   - component: {fileID: 366118984}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -621,6 +621,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0cf1ef030b57034fae02a33afbeeb3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+  dashEffect: {fileID: 0}
   asset: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
 --- !u!114 &366118985
 MonoBehaviour:
@@ -1074,7 +1075,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 655649875}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Eyes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1301,7 +1302,7 @@ GameObject:
   - component: {fileID: 946181514}
   - component: {fileID: 946181513}
   - component: {fileID: 946181512}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}

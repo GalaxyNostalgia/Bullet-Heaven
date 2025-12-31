@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1956038028093600455}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Eyes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 4809687380324290121}
   - component: {fileID: 409070832751674399}
   - component: {fileID: 8335259774203103328}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -158,7 +158,7 @@ GameObject:
   - component: {fileID: 3636804184329587927}
   - component: {fileID: 7133733573943695783}
   - component: {fileID: 6597452107791866926}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -271,7 +271,7 @@ GameObject:
   - component: {fileID: 2042080581265350910}
   - component: {fileID: 7374489785420429705}
   - component: {fileID: 8083155026355921088}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Arm (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -381,7 +381,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5779623559161268293}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Limbs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -417,7 +417,7 @@ GameObject:
   - component: {fileID: 6822211092739558455}
   - component: {fileID: 6703480694912200707}
   - component: {fileID: 6814371119199532220}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -533,7 +533,7 @@ GameObject:
   - component: {fileID: 1247549551252017763}
   - component: {fileID: 9002033742684981904}
   - component: {fileID: -3392899106948736303}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}

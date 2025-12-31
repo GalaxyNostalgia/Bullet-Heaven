@@ -1,5 +1,4 @@
-using System;
-using System.Collections.Generic;
+
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -9,7 +8,7 @@ public class SceneController : MonoBehaviour
     [SerializeField] private Transform[] spawnPoints;
     private GameObject _player;
     private float _spawnInterval = 5f;
-    private float _lastSpawnTime = 0f;
+    private float _lastSpawnTime;
 
     private void Awake()
     {
@@ -22,11 +21,10 @@ public class SceneController : MonoBehaviour
         OutOfBounds();
         if (Time.time >= _lastSpawnTime + _spawnInterval)
         {
-            SpawnEnemy();
-            SpawnEnemy();
-            SpawnEnemy();
-            SpawnEnemy();
-            SpawnEnemy();
+            for (int i = 0; i < 5; i++)
+            {
+                SpawnEnemy();
+            }
             _lastSpawnTime = Time.time;
         }
         
@@ -42,9 +40,12 @@ public class SceneController : MonoBehaviour
 
     private void OutOfBounds()
     {
+        if (!_player) return;
+        
         if (_player.transform.position.y < -5)
         {
             _player.transform.position = new Vector3(0, 2f, 0);
         }
+        
     }
 }
