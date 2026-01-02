@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody _rb;
     private Camera _camera;
-    [SerializeField] GameObject dashEffect;
+    private TrailRenderer _trailRenderer;
     
     private int _speed = 5;
     private Vector2 _movement;
@@ -38,6 +38,8 @@ public class PlayerController : MonoBehaviour
         _moveAction = asset.FindAction("Move");
         _jumpAction = asset.FindAction("Jump");
         _sprintAction = asset.FindAction("Sprint");
+        _trailRenderer = GetComponent<TrailRenderer>();
+        _trailRenderer.emitting = false;
     }
 
     private void Update()
@@ -67,8 +69,9 @@ public class PlayerController : MonoBehaviour
         if (_rb.linearVelocity.sqrMagnitude > 0.01f && Time.time >= _lastDash + _dashCooldown)
         {
             StartCoroutine(DashInvincibility(0.5f));
-            
+
             Vector3 dashDirection = _rb.linearVelocity.normalized;
+            StartCoroutine(StartDashEffect(0.5f));
             _rb.AddForce(dashDirection * 100f, ForceMode.Impulse);
             _lastDash = Time.time;
         }
@@ -167,8 +170,8 @@ public class PlayerController : MonoBehaviour
     
     private IEnumerator StartDashEffect(float duration)
     {
-        dashEffect.SetActive(true);
+        _trailRenderer.emitting = true;
         yield return new WaitForSeconds(duration);
-        dashEffect.SetActive(false);
+        _trailRenderer.emitting = false;
     }
 }
