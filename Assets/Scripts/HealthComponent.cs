@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class HealthComponent : MonoBehaviour
 {
-    private int _health = 100;
+    public int MaxHealth { get; private set; } = 100;
+    public int Health { get; private set; }
     [SerializeField] private GameObject deathParticleEffect;
     private Renderer _renderer;
     private Color _originalColor;
@@ -15,14 +16,15 @@ public class HealthComponent : MonoBehaviour
         {
             _originalColor = _renderer.material.color;
         }
+        Health = MaxHealth;
     }
 
     public void TakeDamage(int damage)
     {
-        _health -= damage;
-        if (_health <= 0)
+        Health -= damage;
+        if (Health <= 0)
         {
-            _health = 0;
+            Health = 0;
             Die();
         }
         else
@@ -31,6 +33,7 @@ public class HealthComponent : MonoBehaviour
             {
                 StopAllCoroutines();
                 StartCoroutine(FlashRed());
+                
             }
         }
     }
@@ -50,7 +53,8 @@ public class HealthComponent : MonoBehaviour
             playerRef.transform.position = transform.position;
         }
 
-        Instantiate(deathParticleEffect, transform.position, Quaternion.identity);
+        GameObject particles = Instantiate(deathParticleEffect, transform.position, Quaternion.identity);
+        Destroy(particles, 0.5f);
 
         Destroy(gameObject);
     }

@@ -8,14 +8,12 @@ public class SwordLogic : MonoBehaviour
 
     void Start()
     {
-        // Position sword at initial orbit distance from parent
         transform.localPosition = new Vector3(orbitRadius, 1.5f, 0);
         transform.localRotation = Quaternion.Euler(90, 0, -90);
     }
 
     void Update()
     {
-        // Rotate around the parent (empty GameObject)
         transform.RotateAround(transform.parent.position, Vector3.up, rotationSpeed * Time.deltaTime);
     }
 

@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody _rb;
     private Camera _camera;
     private TrailRenderer _trailRenderer;
+    private GameObject _swordAnchor;
+    
     
     private int _speed = 5;
     private Vector2 _movement;
@@ -40,6 +42,7 @@ public class PlayerController : MonoBehaviour
         _sprintAction = asset.FindAction("Sprint");
         _trailRenderer = GetComponent<TrailRenderer>();
         _trailRenderer.emitting = false;
+        _swordAnchor = GameObject.Find("SwordAnchor");
     }
 
     private void Update()
@@ -173,5 +176,10 @@ public class PlayerController : MonoBehaviour
         _trailRenderer.emitting = true;
         yield return new WaitForSeconds(duration);
         _trailRenderer.emitting = false;
+    }
+
+    private void OnDestroy()
+    {
+        Destroy(_swordAnchor);
     }
 }

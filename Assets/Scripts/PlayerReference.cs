@@ -9,7 +9,7 @@ public class PlayerReference : MonoBehaviour
         _player = GameObject.FindGameObjectWithTag("Player")?.transform;
     }
 
-    void LateUpdate()
+    void Update()
     {
         if (_player)
         {

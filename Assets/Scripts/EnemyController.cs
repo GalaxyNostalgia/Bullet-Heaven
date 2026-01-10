@@ -15,7 +15,10 @@ public class EnemyController : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody>();
         _player = GameObject.FindWithTag("Player");
-        _playerTransform = _player.transform;
+        if (_player)
+        {
+            _playerTransform = _player.transform;    
+        }
     }
     
     void FixedUpdate()
