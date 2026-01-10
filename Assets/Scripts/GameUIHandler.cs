@@ -6,18 +6,20 @@ public class GameUIHandler : MonoBehaviour
 {
     private GameObject _player;
     private HealthComponent _healthComponent;
-    private UIDocument _uiDoc;
+    private UIDocument UIDoc;
     private Label m_HealthLabel;
+    private VisualElement m_HealthBarMask;
 
     private void Start()
     {
-        _uiDoc = GetComponent<UIDocument>();
+        UIDoc = GetComponent<UIDocument>();
         _player = GameObject.FindWithTag("Player");
         if (_player)
         {
             _healthComponent = _player.GetComponent<HealthComponent>();
         }
-        m_HealthLabel = _uiDoc.rootVisualElement.Q<Label>("HealthLabel");
+        m_HealthLabel = UIDoc.rootVisualElement.Q<Label>("HealthLabel");
+        m_HealthBarMask = UIDoc.rootVisualElement.Q<VisualElement>("HealthBarMask");
         
     }
 
@@ -29,6 +31,9 @@ public class GameUIHandler : MonoBehaviour
     private void HealthChanged()
     {
         m_HealthLabel.text = $"{_healthComponent.Health}/{_healthComponent.MaxHealth}";
+        float healthRatio = (float)_healthComponent.Health /_healthComponent.MaxHealth;
+        float healthPercent = Mathf.Lerp(6, 66, healthRatio);
+        m_HealthBarMask.style.width = Length.Percent(healthPercent);
     }
 
 }

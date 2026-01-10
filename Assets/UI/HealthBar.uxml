@@ -1,5 +1,9 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement name="HealthBarBackground" style="flex-grow: 1; position: absolute; width: 500px; height: 150px; background-image: url(&quot;project://database/Assets/Textures/HealthbarBackground.png?fileID=2800000&amp;guid=ea484e9a4f4686348a981aff049ca796&amp;type=3#HealthbarBackground&quot;); background-size: 75% 75%; background-position-x: left 0; background-position-y: top 0;">
+    <Style src="project://database/Assets/UI/GameUIStyle.uss?fileID=7433441132597879392&amp;guid=18b2167e491f51d4c904c08c2e922f21&amp;type=3#GameUIStyle" />
+    <ui:VisualElement name="HealthBarBackground" class="healthbar-size" style="flex-grow: 1; position: absolute; height: 150px; background-image: url(&quot;project://database/Assets/Textures/HealthbarBackground.png?fileID=2800000&amp;guid=ea484e9a4f4686348a981aff049ca796&amp;type=3#HealthbarBackground&quot;); background-size: 75% 75%; background-position-x: left 0; background-position-y: top 0;">
+        <ui:VisualElement name="HealthBarMask" style="flex-grow: 1; position: absolute; width: 75%; height: 75%; overflow: hidden; right: auto; left: auto; transition-property: width; transition-duration: 0.5s; transition-timing-function: ease-out-bounce;">
+            <ui:VisualElement name="HealthBarFill" class="healthbar-size" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Textures/HealthBarFill.png?fileID=2800000&amp;guid=8314271e656c1ec4a9ce4ae5a164c1a4&amp;type=3#HealthBarFill&quot;); position: absolute; height: 100%; overflow: visible; left: auto;" />
+        </ui:VisualElement>
         <ui:Label text="Label" name="HealthLabel" style="position: absolute; width: 75%; height: 75%; -unity-text-align: middle-left; font-size: 28px; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 50px;" />
     </ui:VisualElement>
 </ui:UXML>
