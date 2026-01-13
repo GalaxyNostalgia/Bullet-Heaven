@@ -9,6 +9,7 @@ public class GameUIHandler : MonoBehaviour
     private UIDocument UIDoc;
     private Label m_HealthLabel;
     private VisualElement m_HealthBarMask;
+    private Label m_ScoreNumber;
 
     private void Start()
     {
@@ -20,12 +21,14 @@ public class GameUIHandler : MonoBehaviour
         }
         m_HealthLabel = UIDoc.rootVisualElement.Q<Label>("HealthLabel");
         m_HealthBarMask = UIDoc.rootVisualElement.Q<VisualElement>("HealthBarMask");
+        m_ScoreNumber = UIDoc.rootVisualElement.Q<Label>("ScoreNumber");
         
     }
 
     private void Update()
     {
         HealthChanged();
+        CheckScore();
     }
 
     private void HealthChanged()
@@ -34,6 +37,11 @@ public class GameUIHandler : MonoBehaviour
         float healthRatio = (float)_healthComponent.Health /_healthComponent.MaxHealth;
         float healthPercent = Mathf.Lerp(6, 66, healthRatio);
         m_HealthBarMask.style.width = Length.Percent(healthPercent);
+    }
+
+    private void CheckScore()
+    {
+        m_ScoreNumber.text = $"{HealthComponent.ScoreStatic}";
     }
 
 }

@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     private Camera _camera;
     private TrailRenderer _trailRenderer;
     private GameObject _swordAnchor;
+    private Animator _animator;
     
     
     private int _speed = 5;
@@ -43,6 +44,7 @@ public class PlayerController : MonoBehaviour
         _trailRenderer = GetComponent<TrailRenderer>();
         _trailRenderer.emitting = false;
         _swordAnchor = GameObject.Find("SwordAnchor");
+        _animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -173,6 +175,9 @@ public class PlayerController : MonoBehaviour
     
     private IEnumerator StartDashEffect(float duration)
     {
+        var vector3 = _trailRenderer.transform.position;
+        vector3.y = 2;
+        _trailRenderer.transform.position = vector3;
         _trailRenderer.emitting = true;
         yield return new WaitForSeconds(duration);
         _trailRenderer.emitting = false;

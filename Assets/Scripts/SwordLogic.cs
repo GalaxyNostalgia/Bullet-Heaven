@@ -8,7 +8,7 @@ public class SwordLogic : MonoBehaviour
 
     void Start()
     {
-        transform.localPosition = new Vector3(orbitRadius, 1.5f, 0);
+        transform.localPosition = new Vector3(orbitRadius, 2f, 0);
         transform.localRotation = Quaternion.Euler(90, 0, -90);
     }
 

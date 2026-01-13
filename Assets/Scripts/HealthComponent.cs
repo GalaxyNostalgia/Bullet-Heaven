@@ -1,12 +1,12 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class HealthComponent : MonoBehaviour
 {
+    public static int ScoreStatic { get; private set; }
     public int MaxHealth { get; private set; } = 100;
     public int Health { get; private set; }
-
+    
     [SerializeField] private GameObject deathParticleEffect;
 
     [Header("Flash")]
@@ -16,43 +16,15 @@ public class HealthComponent : MonoBehaviour
     private Renderer[] _renderers;
     private MaterialPropertyBlock _mpb;
 
-    // Cache original colors per renderer per material index.
-    // Key: (renderer, materialIndex) -> original color
-    private readonly Dictionary<(Renderer r, int i), Color> _originalColors = new();
-
+    
     private void Awake()
     {
         Health = MaxHealth;
-
         _renderers = GetComponentsInChildren<Renderer>(true);
         _mpb = new MaterialPropertyBlock();
 
-        CacheOriginalColors();
     }
-
-    private void CacheOriginalColors()
-    {
-        _originalColors.Clear();
-
-        foreach (var r in _renderers)
-        {
-            if (r == null) continue;
-
-            var sharedMats = r.sharedMaterials;
-            for (int i = 0; i < sharedMats.Length; i++)
-            {
-                var mat = sharedMats[i];
-                if (mat == null) continue;
-
-                // Most character shaders use _Color, some use _BaseColor (URP/HDRP).
-                if (mat.HasProperty("_Color"))
-                    _originalColors[(r, i)] = mat.GetColor("_Color");
-                else if (mat.HasProperty("_BaseColor"))
-                    _originalColors[(r, i)] = mat.GetColor("_BaseColor");
-            }
-        }
-    }
-
+    
     public void TakeDamage(int damage)
     {
         Health -= damage;
@@ -109,5 +81,10 @@ public class HealthComponent : MonoBehaviour
         Destroy(particles, 0.5f);
 
         Destroy(gameObject);
+
+        if (CompareTag("Enemy"))
+        {
+            ScoreStatic++;
+        }
     }
 }

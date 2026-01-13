@@ -208,6 +208,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: be3776e9bd6e31341b3490a035f6ea50, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 1111292475204979539, guid: be3776e9bd6e31341b3490a035f6ea50, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -323,7 +327,7 @@ PrefabInstance:
     - target: {fileID: 5866666021909216657, guid: be3776e9bd6e31341b3490a035f6ea50, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: d0635c5725ebf5c49ba6eee6b99dadb6, type: 2}
+      objectReference: {fileID: 22100000, guid: 3b9ff8ae2aca47242a1abf196e76acf4, type: 2}
     - target: {fileID: 5866666021909216657, guid: be3776e9bd6e31341b3490a035f6ea50, type: 3}
       propertyPath: m_ApplyRootMotion
       value: 0
@@ -496,6 +500,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthComponent
   deathParticleEffect: {fileID: 6937991036912504914, guid: 0268e18460aae3240b9af5469ab9ce4c, type: 3}
+  flashDuration: 0.25
+  flashColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!4 &4674488975978317807 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6472518530401777513, guid: be3776e9bd6e31341b3490a035f6ea50, type: 3}
