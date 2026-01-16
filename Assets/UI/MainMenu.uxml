@@ -1,0 +1,16 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/main-menu-styles.uss?fileID=7433441132597879392&amp;guid=7a5b0ff7ef0182640a3520326a17cd3a&amp;type=3#main-menu-styles" />
+    <ui:VisualElement name="Root" class="root" style="flex-grow: 1;">
+        <ui:VisualElement name="Background_Image" class="background-image" style="flex-grow: 1;" />
+        <ui:VisualElement name="Panel" class="panel" style="flex-grow: 1;">
+            <ui:VisualElement name="TitleText_Container" style="flex-grow: 1;">
+                <ui:Label text="Label" name="TitleText_Label" />
+            </ui:VisualElement>
+            <ui:VisualElement name="Button_Container" style="flex-grow: 1;">
+                <ui:Button text="Button" name="Play_Button" />
+                <ui:Button text="Button" name="Settings_Button" />
+                <ui:Button text="Button" name="Credits_Button" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
