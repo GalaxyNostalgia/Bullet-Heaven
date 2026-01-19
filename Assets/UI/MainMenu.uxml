@@ -3,13 +3,13 @@
     <ui:VisualElement name="Root" class="root" style="flex-grow: 1;">
         <ui:VisualElement name="Background_Image" class="background-image" style="flex-grow: 1;" />
         <ui:VisualElement name="Panel" class="panel" style="flex-grow: 1;">
-            <ui:VisualElement name="TitleText_Container" style="flex-grow: 1;">
-                <ui:Label text="Label" name="TitleText_Label" />
+            <ui:VisualElement name="TitleText_Container" class="title-text-container" style="flex-grow: 1;">
+                <ui:Label text="Bullet Heaven Demo" name="TitleText_Label" class="title-text-label" />
             </ui:VisualElement>
-            <ui:VisualElement name="Button_Container" style="flex-grow: 1;">
-                <ui:Button text="Button" name="Play_Button" />
-                <ui:Button text="Button" name="Settings_Button" />
-                <ui:Button text="Button" name="Credits_Button" />
+            <ui:VisualElement name="Button_Container" class="button-container" style="flex-grow: 1;">
+                <ui:Button text="Play" name="Play_Button" class="main-menu-button" />
+                <ui:Button text="Settings" name="Settings_Button" class="main-menu-button" />
+                <ui:Button text="Credits" name="Credits_Button" class="main-menu-button" />
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
