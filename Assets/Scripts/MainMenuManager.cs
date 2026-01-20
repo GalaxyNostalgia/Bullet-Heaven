@@ -10,7 +10,6 @@ public class MainMenuManager : MonoBehaviour
     private Button _settingsButton;
     private Button _creditsButton;
     
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
         _uiDocument = GetComponent<UIDocument>();
@@ -20,14 +19,28 @@ public class MainMenuManager : MonoBehaviour
         }
 
         _playButton = _uiDocument.rootVisualElement.Q<Button>("Play_Button");
-        _settingsButton = _uiDocument.rootVisualElement.Q<Button>("Settings_Button");
-        _creditsButton = _uiDocument.rootVisualElement.Q<Button>("Credits_Button");
-        
         _playButton.RegisterCallback<ClickEvent>(LoadGameScene);
+        
+        _settingsButton = _uiDocument.rootVisualElement.Q<Button>("Settings_Button");
+        _settingsButton.RegisterCallback<ClickEvent>(ShowSettingsUI);
+        
+        _creditsButton = _uiDocument.rootVisualElement.Q<Button>("Credits_Button");
+        _creditsButton.RegisterCallback<ClickEvent>(ShowCreditsUI);
     }
 
     private void LoadGameScene(ClickEvent e)
     {
         SceneManager.LoadScene("Game");
     }
+    
+    private void ShowSettingsUI(ClickEvent evt)
+    {
+        SettingsUIManager.Instance.SetVisible();
+    }
+    
+    private void ShowCreditsUI(ClickEvent evt)
+    {
+        CreditsUIManager.Instance.SetVisible();
+    }
+
 }

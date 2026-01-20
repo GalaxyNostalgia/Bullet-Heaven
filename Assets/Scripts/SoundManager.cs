@@ -8,7 +8,7 @@ public class SoundManager : MonoBehaviour
     {
         get
         {
-            if (!_instance)
+            if (_instance ==null)
             {
                 Debug.Log("SoundManager not found");
             }
@@ -18,7 +18,7 @@ public class SoundManager : MonoBehaviour
 
     private void Awake()
     {
-        if(!_instance && _instance != this)
+        if(_instance != null && _instance != this)
         {
            Destroy(gameObject);
            return;
@@ -26,14 +26,25 @@ public class SoundManager : MonoBehaviour
 
         _instance = this;
         _audioSource = GetComponent<AudioSource>();
+        _instance.AdjustSoundVolume(0.25f);
     }
 
+    public float GetCurrentVolume()
+    {
+        return _audioSource.volume;
+    }
+
+    public bool IsMuted()
+    {
+        return _audioSource.mute;
+    }
+    
     public void ToggleMute(bool mute)
     {
         _audioSource.mute = mute;
     }
 
-    public void ChangeVolume(float volume)
+    public void AdjustSoundVolume(float volume)
     {
         _audioSource.volume = volume;
     }

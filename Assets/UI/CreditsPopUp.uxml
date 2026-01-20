@@ -1,0 +1,17 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/credits-popup-styles.uss?fileID=7433441132597879392&amp;guid=5c8bf23f46bd19f4dadb0f6c47007d4d&amp;type=3#credits-popup-styles" />
+    <ui:VisualElement name="Root" class="credits-root" style="flex-grow: 1;">
+        <ui:VisualElement name="Panel" class="credits-panel" style="flex-grow: 1;">
+            <ui:VisualElement name="TitleContainer" class="credits-title-container" style="flex-grow: 1;">
+                <ui:Label text="Credits&#10;" name="CreditsTitle_Label" />
+            </ui:VisualElement>
+            <ui:ScrollView name="CreditsScrollView" class="credits-scroll-view">
+                <ui:VisualElement name="Credits_Container" class="credits-credit-container" style="flex-grow: 1;">
+                    <ui:Label text="Juraj Birović" name="CreditsName_Label" class="credits-credit-name-label" />
+                    <ui:Label text="The Chosen One" name="CreditDescription_Label" class="credits-credit-description-label" />
+                </ui:VisualElement>
+            </ui:ScrollView>
+            <ui:Button text="Close" name="Close_Button" class="credits-close-button" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
