@@ -7,7 +7,7 @@ public class EnemyController : MonoBehaviour
     private GameObject _player;
     private Rigidbody _rigidbody;
     private int _damage = 10; 
-    private int _speed = 1;
+    private int _speed = 2;
     private float _attackCooldown = 1f;
     private float _lastAttackTime;
 

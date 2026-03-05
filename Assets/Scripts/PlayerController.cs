@@ -119,7 +119,7 @@ public class PlayerController : MonoBehaviour
 
     private void FasterFall()
     {
-        if (_rb.linearVelocity.y < 0f)
+        if (_rb.linearVelocity.y < 0f && !IsGrounded())
         {
             _rb.linearVelocity += Vector3.up * (_fallMultiplier * (Physics.gravity.y * Time.fixedDeltaTime));
         }
