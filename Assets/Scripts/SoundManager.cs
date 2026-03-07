@@ -27,6 +27,7 @@ public class SoundManager : MonoBehaviour
         _instance = this;
         _audioSource = GetComponent<AudioSource>();
         _instance.AdjustSoundVolume(0.25f);
+        DontDestroyOnLoad(gameObject);
     }
 
     public float GetCurrentVolume()

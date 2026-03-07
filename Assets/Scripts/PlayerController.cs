@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -75,7 +76,7 @@ public class PlayerController : MonoBehaviour
         {
             StartCoroutine(DashInvincibility(0.5f));
 
-            Vector3 dashDirection = _rb.linearVelocity.normalized;
+            Vector3 dashDirection = new Vector3(_rb.linearVelocity.x, 0, _rb.linearVelocity.z).normalized;
             StartCoroutine(StartDashEffect(0.5f));
             _rb.AddForce(dashDirection * 100f, ForceMode.Impulse);
             _lastDash = Time.time;
@@ -111,15 +112,16 @@ public class PlayerController : MonoBehaviour
 
         Vector3 targetVelocity = moveDirection * _speed;
         targetVelocity.y = _rb.linearVelocity.y;
-
-        _rb.linearVelocity = Vector3.Lerp(_rb.linearVelocity, targetVelocity, 0.75f);
+        
+        Vector3 newVelocity = Vector3.MoveTowards(_rb.linearVelocity, targetVelocity, _speed * Time.fixedDeltaTime * 100f);
+        _rb.linearVelocity = newVelocity;
 
         FasterFall();
     }
 
     private void FasterFall()
     {
-        if (_rb.linearVelocity.y < 0f && !IsGrounded())
+        if (transform.position.y < -0.5f && !IsGrounded())
         {
             _rb.linearVelocity += Vector3.up * (_fallMultiplier * (Physics.gravity.y * Time.fixedDeltaTime));
         }
@@ -158,7 +160,7 @@ public class PlayerController : MonoBehaviour
             Vector3 lookDirection = mouseWorldPosition - transform.position;
             lookDirection.y = 0;
 
-            if (lookDirection.sqrMagnitude > 0.01f)
+            if (lookDirection.sqrMagnitude > 1f)
             {
                 Quaternion targetRotation = Quaternion.LookRotation(lookDirection);
                 _rb.MoveRotation(targetRotation);
@@ -186,5 +188,6 @@ public class PlayerController : MonoBehaviour
     private void OnDestroy()
     {
         Destroy(_swordAnchor);
+        SceneManager.LoadScene("DeathScreen");
     }
 }
