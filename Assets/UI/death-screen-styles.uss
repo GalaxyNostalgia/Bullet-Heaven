@@ -6,10 +6,15 @@
 }
 
 .backgroundImage {
-    justify-content: flex-start;
-    align-self: auto;
-    align-items: auto;
-    align-content: auto;
+    justify-content: center;
+    align-self: center;
+    align-items: stretch;
+    align-content: center;
+    background-image: url("project://database/Assets/Textures/DeathScreen.png?fileID=2800000&guid=8254f62c1fe225a4f80aa96262bcfb9a&type=3#DeathScreen");
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -unity-background-scale-mode: scale-and-crop;
 }
 
 .deathPanel {
@@ -18,4 +23,120 @@
     align-items: stretch;
     align-self: center;
     align-content: center;
+    top: 50%;
+    left: 50%;
+    width: 75%;
+    height: 75%;
+    min-height: 75%;
+    min-width: 75%;
+    max-width: 75%;
+    max-height: 75%;
+    border-top-width: 10px;
+    border-right-width: 10px;
+    border-bottom-width: 10px;
+    border-left-width: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.elementContainer {
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    align-content: center;
+    align-items: stretch;
+    justify-content: center;
+    align-self: center;
+    width: 50%;
+    height: 50%;
+}
+
+.deathText {
+    top: 0%;
+    left: 0%;
+    color: rgb(200, 35, 35);
+    justify-content: flex-start;
+    bottom: 25%;
+    background-color: rgba(0, 0, 0, 0.39);
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    background-size: 75% 75%;
+    -unity-background-scale-mode: scale-and-crop;
+}
+
+.deathScreenButton {
+    bottom: 0%;
+    top: 25%;
+    align-content: center;
+    align-self: center;
+    justify-content: center;
+    width: 75%;
+    height: 10%;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    align-items: stretch;
+    border-top-width: 10px;
+    border-right-width: 10px;
+    border-bottom-width: 10px;
+    border-left-width: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    font-size: 50px;
+    color: rgb(25, 25, 25);
+}
+
+.deathScreenButton:hover {
+    bottom: 0%;
+    top: 25%;
+    align-content: center;
+    align-self: center;
+    justify-content: center;
+    width: 75%;
+    height: 10%;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    align-items: stretch;
+    border-top-width: 10px;
+    border-right-width: 10px;
+    border-bottom-width: 10px;
+    border-left-width: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    background-color: rgb(0, 0, 0);
+    font-size: 50px;
+    border-left-color: rgb(255, 255, 255);
+    border-right-color: rgb(255, 255, 255);
+    border-top-color: rgb(255, 255, 255);
+    border-bottom-color: rgb(255, 255, 255);
+    color: rgb(230, 230, 230);
 }

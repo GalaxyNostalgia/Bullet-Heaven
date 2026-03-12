@@ -115,16 +115,7 @@ public class PlayerController : MonoBehaviour
         
         Vector3 newVelocity = Vector3.MoveTowards(_rb.linearVelocity, targetVelocity, _speed * Time.fixedDeltaTime * 100f);
         _rb.linearVelocity = newVelocity;
-
-        FasterFall();
-    }
-
-    private void FasterFall()
-    {
-        if (transform.position.y < -0.5f && !IsGrounded())
-        {
-            _rb.linearVelocity += Vector3.up * (_fallMultiplier * (Physics.gravity.y * Time.fixedDeltaTime));
-        }
+        
     }
 
     public void ApplyKnockback(float duration = 0.25f)

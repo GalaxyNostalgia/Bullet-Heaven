@@ -4,7 +4,6 @@ using UnityEngine.UIElements;
 
 public class MainMenuManager : MonoBehaviour
 {
-    
     private UIDocument _uiDocument;
     private Button _playButton;
     private Button _settingsButton;

@@ -34,7 +34,7 @@ public class SceneController : MonoBehaviour
     {
         int index = Random.Range(0, spawnPoints.Length);
         int[] offsets = {-2, -1, 0, 1, 2};
-        float[] offsetY = { 1, 1.5f, 2 };
+        float[] offsetY = { 0.5f, 1, 1.5f };
         Vector3 offset = new Vector3(offsets[Random.Range(0, offsets.Length)], offsetY[Random.Range(0, offsetY.Length)], offsets[Random.Range(0, offsets.Length)]); 
         Instantiate(enemyPrefab, spawnPoints[index].position + offset, Quaternion.identity);
     }
