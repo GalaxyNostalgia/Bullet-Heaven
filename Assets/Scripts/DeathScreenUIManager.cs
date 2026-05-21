@@ -1,10 +1,11 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using UnityEngine.UIElements;
 
 public class DeathScreenUIManager : MonoBehaviour
 {
-    
+    [FormerlySerializedAs("_audioClip")] [SerializeField] AudioClip audioClip;
     private UIDocument _uiDocument;
     private Button _resetButton;
     private Button _mainMenuButton;
@@ -24,6 +25,11 @@ public class DeathScreenUIManager : MonoBehaviour
         _mainMenuButton.RegisterCallback<ClickEvent>(LoadMainMenuScene);
         
         
+    }
+
+    private void Start()
+    {
+        SoundManager.Instance.ChangeMusic(audioClip);
     }
 
     private void LoadGameScene(ClickEvent e)

@@ -4,6 +4,8 @@ using UnityEngine.UIElements;
 
 public class GameUIHandler : MonoBehaviour
 {
+    [SerializeField] AudioClip audioClip;
+    
     private GameObject _player;
     private HealthComponent _healthComponent;
     private UIDocument UIDoc;
@@ -22,6 +24,7 @@ public class GameUIHandler : MonoBehaviour
         m_HealthLabel = UIDoc.rootVisualElement.Q<Label>("HealthLabel");
         m_HealthBarMask = UIDoc.rootVisualElement.Q<VisualElement>("HealthBarMask");
         m_ScoreNumber = UIDoc.rootVisualElement.Q<Label>("ScoreNumber");
+        SoundManager.Instance.ChangeMusic(audioClip);
         
     }
 

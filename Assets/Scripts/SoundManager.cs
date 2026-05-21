@@ -49,4 +49,11 @@ public class SoundManager : MonoBehaviour
     {
         _audioSource.volume = volume;
     }
+
+    public void ChangeMusic(AudioClip clip)
+    {
+        _audioSource.Stop();
+        _audioSource.clip = clip;
+        _audioSource.Play();
+    }
 }

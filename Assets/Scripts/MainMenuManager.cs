@@ -1,9 +1,12 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class MainMenuManager : MonoBehaviour
 {
+    [SerializeField] AudioClip audioClip;
+    
     private UIDocument _uiDocument;
     private Button _playButton;
     private Button _settingsButton;
@@ -25,6 +28,11 @@ public class MainMenuManager : MonoBehaviour
         
         _creditsButton = _uiDocument.rootVisualElement.Q<Button>("Credits_Button");
         _creditsButton.RegisterCallback<ClickEvent>(ShowCreditsUI);
+    }
+
+    private void Start()
+    {
+        SoundManager.Instance.ChangeMusic(audioClip);
     }
 
     private void LoadGameScene(ClickEvent e)

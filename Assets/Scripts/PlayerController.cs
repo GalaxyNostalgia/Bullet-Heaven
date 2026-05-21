@@ -10,12 +10,14 @@ public class PlayerController : MonoBehaviour
     private TrailRenderer _trailRenderer;
     private GameObject _swordAnchor;
     private Animator _animator;
+    private static readonly int MoveXHash = Animator.StringToHash("MoveX");
+    private static readonly int MoveYHash = Animator.StringToHash("MoveY");
     
     
     private int _speed = 5;
     private Vector2 _movement;
     private float _knockbackEndTime;
-    private float _fallMultiplier = 2.5f;
+    //private float _fallMultiplier = 2.5f;
     private float _dashCooldown = 3f;
     private float _lastDash;
 
@@ -110,12 +112,47 @@ public class PlayerController : MonoBehaviour
         if (moveDirection.sqrMagnitude > 0.01f)
             moveDirection.Normalize();
 
+        if (_animator)
+        {
+            Vector2 animInput = _movement;
+            if (animInput.sqrMagnitude > 0.01f)
+            {
+                animInput.Normalize();
+
+                float absX = Mathf.Abs(animInput.x);
+                float absY = Mathf.Abs(animInput.y);
+
+                if (absX >= 0.5f && absY >= 0.5f)
+                {
+                    animInput.x = Mathf.Sign(animInput.x);
+                    animInput.y = Mathf.Sign(animInput.y);
+                }
+                else if (absX >= absY)
+                {
+                    animInput.x = Mathf.Sign(animInput.x);
+                    animInput.y = 0f;
+                }
+                else
+                {
+                    animInput.y = Mathf.Sign(animInput.y);
+                    animInput.x = 0f;
+                }
+            }
+            else
+            {
+                animInput = Vector2.zero;
+            }
+
+            _animator.SetFloat(MoveXHash, animInput.x);
+            _animator.SetFloat(MoveYHash, animInput.y);
+        }
+
         Vector3 targetVelocity = moveDirection * _speed;
         targetVelocity.y = _rb.linearVelocity.y;
-        
+
         Vector3 newVelocity = Vector3.MoveTowards(_rb.linearVelocity, targetVelocity, _speed * Time.fixedDeltaTime * 100f);
         _rb.linearVelocity = newVelocity;
-        
+
     }
 
     public void ApplyKnockback(float duration = 0.25f)
